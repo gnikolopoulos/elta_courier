@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<definitions name="PELB64VG" targetNamespace="/PELB64VG" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="/PELB64VG" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <!-- Micro Focus NetExpress generated WSDL document-->
+    <types>
+      <schema elementFormDefault="qualified" targetNamespace="/PELB64VG" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="/PELB64VG">
+        <element name="READ">
+          <complexType>
+            <sequence>
+              <element name="pel_user_code" type="string"/>
+              <element name="pel_user_pass" type="string"/>
+              <element name="pel_apost_code" type="string"/>
+              <element name="vg_code" type="string"/>
+              <element name="paper_size" type="string"/>
+            </sequence>
+          </complexType>
+        </element>
+        <element name="READResponse">
+          <complexType>
+            <sequence>
+              <element name="st_flag" type="integer"/>
+              <element name="st_title" type="string"/>
+              <element name="b64_string" type="string"/>
+            </sequence>
+          </complexType>
+        </element>
+      </schema>
+    </types>
+    <message name="READInput">
+      <part element="tns:READ" name="parameters"/>
+    </message>
+    <message name="READOutput">
+      <part element="tns:READResponse" name="parameters"/>
+    </message>
+    <portType name="PELB64VG">
+      <operation name="READ">
+        <input message="tns:READInput"/>
+        <output message="tns:READOutput"/>
+      </operation>
+    </portType>
+    <binding name="PELB64VG" type="tns:PELB64VG">
+      <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+      <operation name="READ">
+        <soap:operation soapAction=""/>
+        <input>
+          <soap:body use="literal"/>
+        </input>
+        <output>
+          <soap:body use="literal"/>
+        </output>
+      </operation>
+    </binding>
+    <service name="PELB64VG">
+      <port binding="tns:PELB64VG" name="PELB64VG">
+        <documentation>
+          <wsi:Claim conformsTo="http://ws-i.org/profiles/basic/1.0"/>
+        </documentation>
+        <soap:address location="http://212.205.47.226:9003"/>
+      </port>
+    </service>
+  </definitions>

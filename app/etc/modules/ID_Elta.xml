@@ -1,0 +1,8 @@
+<config>
+  <modules>
+    <ID_Elta>
+      <active>true</active>
+      <codePool>local</codePool>
+    </ID_Elta>
+  </modules>
+</config>

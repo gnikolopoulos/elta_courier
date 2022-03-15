@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+        <ID_Elta>
+            <version>0.1.0</version>
+        </ID_Elta>
+    </modules>
+
+    <frontend>
+        <routers>
+            <elta>
+                <use>standard</use>
+                <args>
+                    <module>ID_Elta</module>
+                    <frontName>elta</frontName>
+                </args>
+            </elta>
+        </routers>
+
+        <translate>
+            <modules>
+                <ID_Elta>
+                    <files>
+                        <default>ID_Elta.csv</default>
+                    </files>
+                </ID_Elta>
+            </modules>
+        </translate>
+    </frontend>
+
+    <admin>
+	    <routers>
+	        <adminhtml>
+	            <args>
+	                <modules>
+	                    <ID_Elta before="Mage_Adminhtml">ID_Elta_Adminhtml</ID_Elta>
+	                </modules>
+	            </args>
+	        </adminhtml>
+	    </routers>
+	</admin>
+
+	<adminhtml>
+	    <events>
+	        <adminhtml_widget_container_html_before>
+	            <observers>
+	                <elta>
+	                    <class>ID_Elta_Model_Observer</class>
+	                    <method>addButtonVoucher</method>
+	                </elta>
+	            </observers>
+	        </adminhtml_widget_container_html_before>
+
+	    	<core_block_abstract_prepare_layout_before>
+                <observers>
+                    <elta_mass>
+                        <class>ID_Elta_Model_Observer</class>
+                        <method>addActions</method>
+                    </elta_mass>
+                </observers>
+            </core_block_abstract_prepare_layout_before>
+
+            <adminhtml_sales_order_create_process_data_before>
+                <observers>
+                    <elta_customprice>
+                        <class>ID_Elta_Model_Observer</class>
+                        <method>saveCustomData</method>
+                    </elta_customprice>
+                </observers>
+            </adminhtml_sales_order_create_process_data_before>
+	    </events>
+
+        <translate>
+            <modules>
+                <ID_Elta>
+                    <files>
+                        <default>ID_Elta.csv</default>
+                    </files>
+                </ID_Elta>
+            </modules>
+        </translate>
+	</adminhtml>
+
+	<global>
+        <helpers>
+            <elta>
+                <class>ID_Elta_Helper</class>
+            </elta>
+        </helpers>
+
+        <fieldsets>
+            <sales_convert_quote>
+                <field_custom_price><to_order>*</to_order></field_custom_price>
+            </sales_convert_quote>
+
+            <sales_convert_order>
+                <field_custom_price><to_quote>*</to_quote></field_custom_price>
+            </sales_convert_order>
+        </fieldsets>
+
+        <resources>
+            <id_elta_setup>
+                <setup>
+                    <module>ID_Elta</module>
+                    <class>ID_Elta_Model_Resource_Setup</class>
+                </setup>
+            </id_elta_setup>
+        </resources>
+
+        <models>
+            <id_elta>
+                <class>ID_Elta_Model</class>
+                <resourceModel>id_elta_resource</resourceModel>
+            </id_elta>
+
+            <id_elta_resource>
+                <class>ID_Elta_Model_Resource</class>
+                <entities>
+                    <voucher>
+                        <table>id_elta_voucher</table>
+                    </voucher>
+                </entities>
+            </id_elta_resource>
+        </models>
+
+        <blocks>
+            <id_elta>
+                <class>ID_Elta_Block</class>
+            </id_elta>
+
+            <adminhtml>
+                <rewrite>
+                    <sales_order_totals>ID_Elta_Block_Adminhtml_Sales_Order_Totals</sales_order_totals>
+                </rewrite>
+            </adminhtml>
+        </blocks>
+    </global>
+
+    <default>
+        <carriers>
+            <id_elta>
+                <active>0</active>
+                <model>id_elta/carrier</model>
+                <title>ELTA Courier</title>
+                <sort_order>10</sort_order>
+                <sallowspecific>0</sallowspecific>
+            </id_elta>
+        </carriers>
+
+        <elta>
+            <login>
+                <api_url>http://212.205.47.226:9003?wsdl</api_url>
+                <appkey>999999999</appkey>
+                <username>9999999</username>
+                <password>9999999</password>
+            </login>
+        </elta>
+    </default>
+</config>

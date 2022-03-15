@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <elta translate="title" module="elta">
+                                        <title>ELTA Courier</title>
+                                    </elta>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+
+                    <elta translate="title" module="elta"><!-- this is the top  level menu -->
+                        <title>ELTA Courier</title>
+                        <children>
+                            <vouchers translate="title" module="elta"><!-- this is the submenu item -->
+                                <title>Vouchers</title>
+                            </vouchers>
+                        </children>
+                    </elta>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+
+    <menu>
+        <elta translate="title" module="elta">
+            <title>ELTA Courier</title>
+            <sort_order>25</sort_order>
+            <children>
+                <vouchers translate="title" module="elta">
+                    <title>Vouchers</title>
+                    <sort_order>991</sort_order>
+                    <action>adminhtml/elta/vouchers</action>
+                </vouchers>
+            </children>
+        </elta>
+    </menu>
+</config>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<definitions name="CREATEAWB" targetNamespace="/CREATEAWB" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="/CREATEAWB" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <!-- Micro Focus NetExpress generated WSDL document-->
+    <types>
+      <schema elementFormDefault="qualified" targetNamespace="/CREATEAWB" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="/CREATEAWB">
+        <element name="READ">
+          <complexType>
+            <sequence>
+              <element name="pel_user_code" type="string"/>
+              <element name="pel_user_pass" type="string"/>
+              <element name="pel_apost_code" type="string"/>
+              <element name="pel_apost_sub_code" type="string"/>
+              <element name="pel_user_lang" type="string"/>
+              <element name="pel_paral_name" type="string"/>
+              <element name="pel_paral_address" type="string"/>
+              <element name="pel_paral_area" type="string"/>
+              <element name="pel_paral_tk" type="string"/>
+              <element name="pel_paral_thl_1" type="string"/>
+              <element name="pel_paral_thl_2" type="string"/>
+              <element name="pel_service" type="string"/>
+              <element name="pel_baros" type="string"/>
+              <element name="pel_temaxia" type="string"/>
+              <element name="pel_paral_sxolia" type="string"/>
+              <element name="pel_sur_1" type="string"/>
+              <element name="pel_sur_2" type="string"/>
+              <element name="pel_sur_3" type="string"/>
+              <element name="pel_ant_poso" type="string"/>
+              <element name="pel_ant_poso1" type="string"/>
+              <element name="pel_ant_poso2" type="string"/>
+              <element name="pel_ant_poso3" type="string"/>
+              <element name="pel_ant_poso4" type="string"/>
+              <element name="pel_ant_date1" type="string"/>
+              <element name="pel_ant_date2" type="string"/>
+              <element name="pel_ant_date3" type="string"/>
+              <element name="pel_ant_date4" type="string"/>
+              <element name="pel_asf_poso" type="string"/>
+              <element name="pel_ref_no" type="string"/>
+            </sequence>
+          </complexType>
+        </element>
+        <element name="READResponse">
+          <complexType>
+            <sequence>
+              <element name="st_flag" type="integer"/>
+              <element name="st_title" type="string"/>
+              <element name="vg_code" type="string"/>
+              <element name="return_vg" type="string"/>
+              <element name="epitagh_vg" type="string"/>
+              <element maxOccurs="35" minOccurs="0" name="vg_child" type="string"/>
+            </sequence>
+          </complexType>
+        </element>
+      </schema>
+    </types>
+    <message name="READInput">
+      <part element="tns:READ" name="parameters"/>
+    </message>
+    <message name="READOutput">
+      <part element="tns:READResponse" name="parameters"/>
+    </message>
+    <portType name="CREATEAWB">
+      <operation name="READ">
+        <input message="tns:READInput"/>
+        <output message="tns:READOutput"/>
+      </operation>
+    </portType>
+    <binding name="CREATEAWB" type="tns:CREATEAWB">
+      <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+      <operation name="READ">
+        <soap:operation soapAction=""/>
+        <input>
+          <soap:body use="literal"/>
+        </input>
+        <output>
+          <soap:body use="literal"/>
+        </output>
+      </operation>
+    </binding>
+    <service name="CREATEAWB">
+      <port binding="tns:CREATEAWB" name="CREATEAWB">
+        <documentation>
+          <wsi:Claim conformsTo="http://ws-i.org/profiles/basic/1.0"/>
+        </documentation>
+        <soap:address location="http://212.205.47.226:9003"/>
+      </port>
+    </service>
+  </definitions>
